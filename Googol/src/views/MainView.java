@@ -7,10 +7,8 @@ import board.Board;
 import board.Move;
 import board.Piece;
 import board.Position;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
-
 import swing2swt.layout.BorderLayout;
 
 import org.eclipse.swt.layout.FillLayout;
