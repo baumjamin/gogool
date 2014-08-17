@@ -62,13 +62,13 @@ public class Board {
 		}
 	}
 
-	public boolean isMoveValid(Move move){
+	public boolean isMoveValid(Player player, Move move){
 		//TODO When is a move valid? Is there a correct piece at the position?
 		return true;
 	}
 
-	public boolean setMove(Move move){
-		if (isMoveValid(move)){
+	public boolean setMove(Player player, Move move){
+		if (isMoveValid(player, move)){
 			System.out.println(move.toString());
 			//TODO Actually do the move
 			Piece selectedPiece = board[move.getFromX()][move.getFromY()];

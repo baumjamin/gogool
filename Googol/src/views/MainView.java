@@ -37,9 +37,9 @@ public class MainView {
 		String nameBlack = "Name black";
 
 		//Create 2 players
-		Player playerWhite = new Player(Player.WHITE, nameWhite);
-		Player playerBlack = new Player(Player.BLACK, nameBlack);
-
+		final Player playerWhite = new Player(Player.WHITE, nameWhite);
+		final Player playerBlack = new Player(Player.BLACK, nameBlack);
+		final Player currentPlayer = null;
 		//Spieler können den König frei setzen, wohin?
 		boolean kingWhite = false;
 		while (!kingWhite){
@@ -160,7 +160,7 @@ public class MainView {
 			
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				board.setMove(new Move(0, 0, 1, 0));
+				board.setMove(currentPlayer, new Move(0, 0, 1, 0));
 				centerComp.redraw();
 				
 			}
