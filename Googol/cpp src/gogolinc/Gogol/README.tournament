@@ -1,0 +1,18 @@
+TournamentPlayer:
+Play Gogol via network.
+Needs four different computers.
+
+Procedure:
+Start the master	./gogol master
+Start the observer	<observerImplementation> observer <masterIP>
+Start the first AI 	<firstAI> tournament ai <masterIP>
+Start the second AI 	<secondAI> ai tournament <masterIP>
+
+Yes, order matters!
+
+Get the master's implementation from gforge. 
+
+Pool-IPs: 
+172.27.1.<numberOfComputer>
+E.g. computer c038 has IP 172.27.1.38
+

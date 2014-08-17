@@ -1,0 +1,6 @@
+Master can be used in any role: 
+./gogol master
+./gogol observer <masterIP>
+./gogol tournament ai <masterIP>
+./gogol ai tournament <masterIP>
+Use the master to test your implementation for contest.

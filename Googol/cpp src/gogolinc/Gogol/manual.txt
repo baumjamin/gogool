@@ -1,0 +1,21 @@
+Gogol
+-----
+Das Spiel Gogol ist fuer zwei Spieler ausgelegt. Du kannst also zu Beginn zwischen 3 Modi waehlen:
+1) Person1 gegen Person2   (human human)
+2) Person gegen Computer   (human ai oder ai human)
+3) Computer gegen Computer (ai ai)
+Jenachdem wofür du dich entscheidest, muss der Programmaufruf angepasst werden.
+Bsp.: ./Main.out human human 
+
+Das Spiel kann abgebrochen werden, indem anstatt eines Zuges 'quit' eingeben wird.
+
+Das Spiel beginnt:
+Zuerst muss jeweils der Koenig gesetzt werden. Gezogen wird durch Eingabe des Zielfeldes.
+Bsp.: h5
+
+Anschliessend folgen wechselseitig die Spielzuege, wobei jeweils das Herkunft- und das Zielfeld angegeben werden muss.
+Bsp.: b1 c6 
+
+usw...
+
+Spielende: Das Spiel ist beendet, wenn ein Spieler den Koenig des anderen schlaegt(durch Ueberspringen) oder er seinen eigenen Koenig auf die gegnerische Grundlinie setzen kann.
