@@ -1,5 +1,5 @@
 package board;
-
+// Test
 import player.Player;
 
 /**
@@ -28,7 +28,7 @@ public class Board {
 	public void setKingBlack(Position kingBlack) {
 		this.kingBlack = kingBlack;
 	}
-
+	
 	//Baut das Feld auf
 	Piece[][] board = new Piece[8][8];
 	public Board() {
