@@ -35,7 +35,7 @@ public class Player {
 		
 		this.color = color;
 		this.name = name;
-		System.out.println("Creating " + this.getName() + " as " + this.getColorName());
+//		System.out.println("Creating " + this.getName() + " as " + this.getColorName());
 	}
 
 	private String getName(){

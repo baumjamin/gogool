@@ -27,10 +27,23 @@ import org.eclipse.swt.widgets.Button;
 
 public class MainView {
 
+	
+	private static Player currentPlayer = null;
+	
+	
+	public static Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public static void setCurrentPlayer(Player currentPlayer) {
+		MainView.currentPlayer = currentPlayer;
+	}
 
 	private static Board board = new Board();
+	
+	
+	
 	public static void main(String[] args) {
-
 
 		//TODO Get player names via input?
 		String nameWhite = "Name white";
@@ -39,7 +52,10 @@ public class MainView {
 		//Create 2 players
 		final Player playerWhite = new Player(Player.WHITE, nameWhite);
 		final Player playerBlack = new Player(Player.BLACK, nameBlack);
-		final Player currentPlayer = null;
+		
+		
+		
+		
 		//Spieler können den König frei setzen, wohin?
 		boolean kingWhite = false;
 		while (!kingWhite){
