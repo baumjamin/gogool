@@ -29,19 +29,7 @@ public class MainView {
 
 	
 	private static Player currentPlayer = null;
-	
-	
-	public static Player getCurrentPlayer() {
-		return currentPlayer;
-	}
-
-	public static void setCurrentPlayer(Player currentPlayer) {
-		MainView.currentPlayer = currentPlayer;
-	}
-
 	private static Board board = new Board();
-	
-	
 	
 	public static void main(String[] args) {
 
@@ -130,8 +118,15 @@ public class MainView {
 				System.out.println("Button: " +event.button + " @" + event.x + " " + event.y +" pressed" );
 				
 				//TODO Ausrechnen, welches Feld von board geklickt wurde. Ähnlich wie die Berechnung wo die Figuren sind unten.
-//				 board[40 + event.x*75;
-//			      klick_dst.y = 42 + event.y*75;
+				/**
+				 * Stein selektieren,
+				 * Zielfeld selektieren,
+				 * Stein bewegen,
+				 * Übersprungen Steine löschen,
+				 * Testen, ob man eine Dame bekommt,
+				 * Spieler wechseln,
+				 * LOOP
+				 */
 			}
 			
 			@Override
@@ -196,7 +191,22 @@ public class MainView {
 		}
 		display.dispose();
 	}
+	/**
+	 * 
+	 * @return Gibt den aktiven Spieler zurück
+	 */
+	public static Player getCurrentPlayer() {
+		return currentPlayer;
+	}
 
+	/**
+	 * Setzt den gerade aktiven Spieler: Weiß oder Schwarz
+	 * @param currentPlayer der aktive Spieler
+	 */
+	public static void setCurrentPlayer(Player currentPlayer) {
+		MainView.currentPlayer = currentPlayer;
+	}
+	
 	public static Board getBoard () {
 		return board;
 	}

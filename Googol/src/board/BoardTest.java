@@ -34,7 +34,11 @@ public class BoardTest {
 		Board board = new Board();
 		Player player = new Player(Player.WHITE, "Name");
 		Player falsePlayer = new Player(Player.BLACK,"FalseName");
+		
+			
 		MainView.setCurrentPlayer(player);
+		
+		
 		assertFalse(board.isMoveValid(player, new Move(9,8,0,1)));
 		assertFalse(board.isMoveValid(player, new Move(1,1,10,1)));
 		assertFalse(board.isMoveValid(falsePlayer, new Move(2,4,3,1)));
