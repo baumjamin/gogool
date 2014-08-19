@@ -41,7 +41,9 @@ public class Position {
 		this.y = y;
 	}
 
-	public HashSet<Move> getAcceptibleMoves(int color, Piece board [][]){
+	
+	
+	public HashSet<Move> getPossibleMoves(int color, Piece board [][]){
 
 		HashSet<Move> moves = new HashSet<Move>();
 

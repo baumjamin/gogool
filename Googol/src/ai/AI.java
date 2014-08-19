@@ -95,7 +95,7 @@ public class AI {
 		Iterator<Position> pawnsIt = pawnPositions.iterator();
 		HashSet<Move> possibleMoves = new HashSet<Move>();
 		while(pawnsIt.hasNext()){
-			possibleMoves.addAll(pawnsIt.next().getAcceptibleMoves(color, board));
+			possibleMoves.addAll(pawnsIt.next().getPossibleMoves(color, board));
 		}
 		
 		int rand = randBetween(0, possibleMoves.size());
