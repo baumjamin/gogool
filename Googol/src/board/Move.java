@@ -1,8 +1,5 @@
 package board;
 
-import java.util.HashSet;
-
-import player.Player;
 
 /**
  * Klasse Move

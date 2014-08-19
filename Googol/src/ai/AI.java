@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 import player.Player;
-import board.Board;
 import board.Move;
 import board.Piece;
 import board.Position;
@@ -97,12 +96,12 @@ public class AI {
 		while(pawnsIt.hasNext()){
 			possibleMoves.addAll(pawnsIt.next().getPossibleMoves(color, board));
 		}
-		
+
 		int rand = randBetween(0, possibleMoves.size());
-		
+
 		Iterator<Move> possibleMovesIt = possibleMoves.iterator();
-//		System.out.println("POSSIBLE MOVES");
-//		System.out.println(possibleMoves.toString());
+		//		System.out.println("POSSIBLE MOVES");
+		//		System.out.println(possibleMoves.toString());
 		Move selectedMove = null;
 		int counter = 0;
 		while(possibleMovesIt.hasNext() && counter < rand){
@@ -114,8 +113,12 @@ public class AI {
 	}
 
 
-
-	private Position getRandomPiecePosition(HashSet<Position> positions) {
+	/**
+	 * @param positions Alle Positionen
+	 * @return eine zufällige Position aller Positionen
+	 */
+	@Deprecated
+	public Position getRandomPiecePosition(HashSet<Position> positions) {
 		int i = randBetween(0, positions.size());
 		Iterator<Position> posIt = positions.iterator();
 		Position pos = null;

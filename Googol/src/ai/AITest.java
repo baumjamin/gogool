@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import player.Player;
 import board.Board;
-import board.Move;
 import board.Piece;
 
 public class AITest {

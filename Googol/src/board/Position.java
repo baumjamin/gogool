@@ -41,8 +41,13 @@ public class Position {
 		this.y = y;
 	}
 
-	
-	
+
+	/**
+	 * 
+	 * @param color Farbe des Spielers
+	 * @param board Das aktuelle Spielfeld
+	 * @return Liefert eine Liste als HashSet<Move> mit allen möglichen Zügen des Spielers
+	 */
 	public HashSet<Move> getPossibleMoves(int color, Piece board [][]){
 
 		HashSet<Move> moves = new HashSet<Move>();
@@ -116,8 +121,15 @@ public class Position {
 		return moves;
 	}
 
-	private boolean isPositionOccupied(Piece[][] board, Position next) {
-		if (board[next.getX()][next.getY()] == Piece.FREE)
+
+	/**
+	 * 
+	 * @param board Das aktuelle Spielfeld
+	 * @param position Die zu prüfende Position
+	 * @return True, wenn die gewünschte Position bereits belegt ist, sonst false.
+	 */
+	private boolean isPositionOccupied(Piece[][] board, Position position) {
+		if (board[position.getX()][position.getY()] == Piece.FREE)
 			return false;
 		else
 			return true;
