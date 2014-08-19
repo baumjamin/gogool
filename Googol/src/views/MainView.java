@@ -27,11 +27,22 @@ import org.eclipse.swt.widgets.Button;
 
 public class MainView {
 
-	
+
 	private static Player currentPlayer = null;
 	private static Board board = new Board();
-	
+
 	public static void main(String[] args) {
+		Display display = new Display();
+		Shell mainShell = new Shell(display);
+
+		//TODO Neue, bessere Bilder finden.
+		// Alle Bilder, die verwendet werden initialisieren
+		final Image image_board = new Image(display, new ImageData("images/board.png"));
+		final Image image_pawnWhite = new Image(display, new ImageData("images/pawn_white.png"));
+		final Image image_pawnBlack = new Image(display, new ImageData("images/pawn_black.png"));
+		final Image image_kingWhite = new Image(display, new ImageData("images/king_white.png"));
+		final Image image_kingBlack = new Image(display, new ImageData("images/king_black.png"));
+
 
 		//TODO Get player names via input?
 		String nameWhite = "Name white";
@@ -40,18 +51,14 @@ public class MainView {
 		//Create 2 players
 		final Player playerWhite = new Player(Player.WHITE, nameWhite);
 		final Player playerBlack = new Player(Player.BLACK, nameBlack);
-		
-		
-		
-		
+
 		System.out.println();
 		System.out.println();
 		// Wie sieht das Board nun aus?
 		board.printBoard();
 
 		// View erstellen
-		Display display = new Display();
-		Shell mainShell = new Shell(display);
+
 		mainShell.setImage(SWTResourceManager.getImage("images/board.png")); //Kleines icon in der Taskleiste
 		mainShell.setMinimumSize(new Point(800, 700));
 		mainShell.setText("CHECKERS");
@@ -74,12 +81,6 @@ public class MainView {
 		centerComp.setLayoutData(BorderLayout.CENTER);
 		centerComp.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-		// Alle Bilder, die verwendet werden initialisieren
-		final Image image_board = new Image(display, new ImageData("images/board.png"));
-		final Image image_pawnWhite = new Image(display, new ImageData("images/pawn_white.png"));
-		final Image image_pawnBlack = new Image(display, new ImageData("images/pawn_black.png"));
-		final Image image_kingWhite = new Image(display, new ImageData("images/king_white.png"));
-		final Image image_kingBlack = new Image(display, new ImageData("images/king_black.png"));
 
 		// Weißen Bauer/König auf die östliche Seite
 		Label image_pawnWhiteLabel = new Label(eastComp, SWT.NONE);
@@ -92,15 +93,15 @@ public class MainView {
 		Label image_kingBlackLabel = new Label(westComp, SWT.NONE);
 		image_pawnBlackLabel.setImage(image_pawnBlack);
 		image_kingBlackLabel.setImage(image_kingBlack);
-		
-		
+
+
 		//MouseListener für das Spielfeld. Registriert die Maustasten. Hiermit soll man später das Spiel spielen.
 		centerComp.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseUp(MouseEvent arg0) {
 			}
-			
+
 			@Override
 			public void mouseDown(MouseEvent event) {
 				System.out.println("Button: " +event.button + " @" + event.x + " " + event.y +" pressed" );
@@ -116,13 +117,13 @@ public class MainView {
 				 * LOOP
 				 */
 			}
-			
+
 			@Override
 			public void mouseDoubleClick(MouseEvent arg0) {
-				
+
 			}
 		});
-		
+
 		//Der PaintListener wird aufgerufen, wenn das Fenster neu gezeichnet werden muss. Das passiert z.b. bei einem ziehen des Fensters,
 		//aber auch, wenn man centerComp.redraw() explizit aufruft.
 		centerComp.addPaintListener(new PaintListener() {
@@ -131,7 +132,7 @@ public class MainView {
 				e.gc.drawImage(image_board, 0, 0);
 				//Aktuelles board holen für den redraw
 				final Board pBoard = board;
-				
+
 				for (int i = 0; i< 8; i++){
 					for (int j = 0; j < 8; j++){
 						if (pBoard.getField(new Position(j, i))==Piece.DAME_BLACK){
@@ -151,27 +152,27 @@ public class MainView {
 			}
 		});
 
-		
+
 		// Testbutton, mit dem man aktuell einen move machen kann
 		Button btnNewButton = new Button(westComp, SWT.NONE);
 		btnNewButton.setText("New Button");
 		btnNewButton.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				setCurrentPlayer(playerWhite);
 				board.setMove(playerWhite, new Move(0, 0, 1, 0));
 				centerComp.redraw();
-				
+
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
 			}
 		});
 
 
-		
+
 		//öffnet die Shell und lässt sie im "Leerlauf" bis man das Programm beendet.
 		mainShell.open();
 		while (!mainShell.isDisposed()) {
@@ -195,7 +196,7 @@ public class MainView {
 	public static void setCurrentPlayer(Player currentPlayer) {
 		MainView.currentPlayer = currentPlayer;
 	}
-	
+
 	public static Board getBoard () {
 		return board;
 	}
