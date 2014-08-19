@@ -134,13 +134,13 @@ public class MainView {
 				
 				for (int i = 0; i< 8; i++){
 					for (int j = 0; j < 8; j++){
-						if (pBoard.getField(new Position(j, i))==Piece.KING_BLACK){
+						if (pBoard.getField(new Position(j, i))==Piece.DAME_BLACK){
 							e.gc.drawImage(image_kingBlack, 40 + i*75, 42+j*75);
 						}
 						if (pBoard.getField(new Position(j, i))==Piece.PAWN_BLACK){
 							e.gc.drawImage(image_pawnBlack, 40 + i*75, 42+j*75);
 						}
-						if (pBoard.getField(new Position(j, i))==Piece.KING_WHITE){
+						if (pBoard.getField(new Position(j, i))==Piece.DAME_WHITE){
 							e.gc.drawImage(image_kingWhite, 40 + i*75, 42+j*75);
 						}
 						if (pBoard.getField(new Position(j, i))==Piece.PAWN_WHITE){

@@ -1,5 +1,9 @@
 package board;
 
+import java.util.HashSet;
+
+import player.Player;
+
 /**
  * Klasse Move
  * @author Benny
@@ -38,7 +42,17 @@ public class Move {
 		this.toX = toX;
 		this.toY = toY;
 	}
-	
+
+	public Move(Position from, Position to) {
+		this(from.getX(),from.getY(),to.getX(),to.getY());
+
+	}
+
+	public boolean equals(Move anotherMove) {
+
+		return this.getFromX() == anotherMove.getFromX() && this.getFromY() == anotherMove.getFromY() && this.getToX() == anotherMove.getToX() && this.getToY() == anotherMove.getToY();
+	}
+
 	@Override
 	public String toString() {
 		return ("FROM: ("+ fromX+","+fromY+") to ("+toX+","+toY+")");
