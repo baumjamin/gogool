@@ -44,18 +44,6 @@ public class MainView {
 		
 		
 		
-		//Spieler können den König frei setzen, wohin?
-//		boolean kingWhite = false;
-//		while (!kingWhite){
-//			System.out.println("SET KING: WHITE");
-//			kingWhite = board.setKing(playerWhite, new Position(2, 2)); //TODO Fragen, wohin
-//		}
-//		boolean kingBlack = false;
-//		while (!kingBlack){
-//			System.out.println("SET KING: BLACK");
-//			kingBlack = board.setKing(playerBlack, new Position(3, 3)); //TODO Fragen, wohin
-//
-//		}
 		System.out.println();
 		System.out.println();
 		// Wie sieht das Board nun aus?
