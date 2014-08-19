@@ -33,15 +33,24 @@ public class Board {
 	//Baut das Feld auf
 
 	public Board() {
-		for (int i = 0; i< 8; i++){
+		/**
+		 * i |  	j ->
+		 *   v
+		 */
+		for (int i = 0; i< 8; i++){ 
 			for (int j = 0; j < 8; j++){
-				board[i][j] = Piece.FREE;
+				if (((i + j) % 2 == 0) && i < 2)
+					board[i][j] = Piece.PAWN_WHITE;
+				else if (((i + j) % 2 == 0) && i > 5)
+					board[i][j] = Piece.PAWN_BLACK;
+				else
+					board[i][j] = Piece.FREE;
 			}
 		}
-		for (int i = 0; i < 8 ; i++){
-			board[0][i] = Piece.PAWN_WHITE;
-			board[7][i] = Piece.PAWN_BLACK;
-		}
+//		for (int i = 0; i < 8 ; i++){
+//			board[0][i] = Piece.PAWN_WHITE;
+//			board[7][i] = Piece.PAWN_BLACK;
+//		}
 
 
 		//		System.out.println("Creating Board:");

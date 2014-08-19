@@ -45,17 +45,17 @@ public class MainView {
 		
 		
 		//Spieler können den König frei setzen, wohin?
-		boolean kingWhite = false;
-		while (!kingWhite){
-			System.out.println("SET KING: WHITE");
-			kingWhite = board.setKing(playerWhite, new Position(2, 2)); //TODO Fragen, wohin
-		}
-		boolean kingBlack = false;
-		while (!kingBlack){
-			System.out.println("SET KING: BLACK");
-			kingBlack = board.setKing(playerBlack, new Position(3, 3)); //TODO Fragen, wohin
-
-		}
+//		boolean kingWhite = false;
+//		while (!kingWhite){
+//			System.out.println("SET KING: WHITE");
+//			kingWhite = board.setKing(playerWhite, new Position(2, 2)); //TODO Fragen, wohin
+//		}
+//		boolean kingBlack = false;
+//		while (!kingBlack){
+//			System.out.println("SET KING: BLACK");
+//			kingBlack = board.setKing(playerBlack, new Position(3, 3)); //TODO Fragen, wohin
+//
+//		}
 		System.out.println();
 		System.out.println();
 		// Wie sieht das Board nun aus?
@@ -66,7 +66,7 @@ public class MainView {
 		Shell mainShell = new Shell(display);
 		mainShell.setImage(SWTResourceManager.getImage("images/board.png")); //Kleines icon in der Taskleiste
 		mainShell.setMinimumSize(new Point(800, 700));
-		mainShell.setText("GOGOL");
+		mainShell.setText("CHECKERS");
 		mainShell.setSize(1000, 800);
 		mainShell.setLayout(new FillLayout(SWT.HORIZONTAL));
 
@@ -116,7 +116,7 @@ public class MainView {
 			@Override
 			public void mouseDown(MouseEvent event) {
 				System.out.println("Button: " +event.button + " @" + event.x + " " + event.y +" pressed" );
-				
+				System.out.println("as");
 				//TODO Ausrechnen, welches Feld von board geklickt wurde. Ähnlich wie die Berechnung wo die Figuren sind unten.
 				/**
 				 * Stein selektieren,
@@ -171,7 +171,8 @@ public class MainView {
 			
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				board.setMove(currentPlayer, new Move(0, 0, 1, 0));
+				setCurrentPlayer(playerWhite);
+				board.setMove(playerWhite, new Move(0, 0, 1, 0));
 				centerComp.redraw();
 				
 			}
