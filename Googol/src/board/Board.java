@@ -32,9 +32,50 @@ public class Board {
 					board[i][j] = Piece.FREE;
 			}
 		}
-		
+
 	}
 
+	/**
+	 * Copy Constructor
+	 * @param board2
+	 */
+	public Board(Board board2) {
+		for (int i = 0; i< 8; i++){ 
+			for (int j = 0; j < 8; j++){
+				board[i][j] = board2.getBoard()[i][j];
+			}
+		}
+
+	}
+
+
+	public Board(boolean isEmpty) {
+		if (isEmpty){
+			for (int i = 0; i< 8; i++){ 
+				for (int j = 0; j < 8; j++){
+					if ((i + j) % 2 == 1)
+						board[i][j] = Piece.BLOCKED;
+					else
+						board[i][j] = Piece.FREE;
+				}
+
+			}
+		}
+		else {
+			for (int i = 0; i< 8; i++){ 
+				for (int j = 0; j < 8; j++){
+					if (((i + j) % 2 == 0) && i < 2)
+						board[i][j] = Piece.PAWN_WHITE;
+					else if (((i + j) % 2 == 0) && i > 5)
+						board[i][j] = Piece.PAWN_BLACK;
+					else if ((i + j) % 2 == 1)
+						board[i][j] = Piece.BLOCKED;
+					else
+						board[i][j] = Piece.FREE;
+				}
+			}
+		}
+	}
 
 	public boolean isMoveValid(Player player, Move move){
 		//TODO When is a move valid? Is there a correct piece at the position?
@@ -53,10 +94,21 @@ public class Board {
 		if (isMoveValid(player, move)){
 			//TODO Actually do the move
 			Piece selectedPiece = board[move.getFromX()][move.getFromY()];
-			System.out.println(selectedPiece.getPiece() + " " + selectedPiece.getPieceName());
+			//			System.out.println(move.toString() + " ### " +selectedPiece.getPiece() + " " + selectedPiece.getPieceName());
 			board[move.getFromX()][move.getFromY()] = Piece.FREE;
+			if (selectedPiece == Piece.PAWN_WHITE || selectedPiece == Piece.PAWN_BLACK){
+				int toX = move.getToX();
+				int toY = move.getToY();
+				int fromX = move.getFromX();
+				int fromY = move.getFromY();
+				int deltaX = fromX-toX;
+				int deltaY = fromY-toY;
+				int dx = fromX-deltaX/2;
+				int dy = fromY-deltaY/2;
+				System.out.println( "DELTA :" + dx + " " +  dy + " " + board[dx][dy].getPieceName() + " DELETED");
+				board[dx][dy] = Piece.FREE;
+			}
 			board[move.getToX()][move.getToY()] = selectedPiece;
-			printBoard();
 			return true;
 		}
 		else

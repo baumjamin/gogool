@@ -45,41 +45,62 @@ public class Position {
 	/**
 	 * 
 	 * @param color Farbe des Spielers
-	 * @param board Das aktuelle Spielfeld
+	 * @param board.getBoard() Das aktuelle Spielfeld
 	 * @return Liefert eine Liste als HashSet<Move> mit allen möglichen Zügen des Spielers
 	 */
-	public HashSet<Move> getPossibleMoves(int color, Piece board [][]){
+	public HashSet<Move> getPossibleMoves(int color, Board board){
 
 		HashSet<Move> moves = new HashSet<Move>();
-
 		if (color == Player.WHITE){
 			//Weiß spielt von oben nach unten
 
-			if (board[this.getX()][this.getY()]==Piece.PAWN_WHITE){
+			if (board.getBoard()[this.getX()][this.getY()]==Piece.PAWN_WHITE){
 				Position next = new Position(this.getX()+1, this.getY()+1);
 				//			System.out.println("new pos: " + next.toString() + " " + next.isPositionValid());
-				if (next.isPositionValid() && !next.isPositionOccupied(board,next)){
+				if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
 					moves.add(new Move(this, next));
+				}
+				else if (next.isPositionValid() && next.isPositionOccupied(board.getBoard(),next)){
+					//Springen
+					if (board.getBoard()[next.getX()][next.getY()]==Piece.PAWN_BLACK || board.getBoard()[next.getX()][next.getY()]==Piece.DAME_BLACK)
+					{
+						System.out.println("JUMPING PAWN");
+						next = new Position(this.getX()+2, this.getY()+2);
+						if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
+							moves.add(new Move(this,next));
+						}
+					}
 				}
 
 				next = new Position(this.getX()+1, this.getY()-1);
 				//			System.out.println("new pos: " + next.toString() + " " + next.isPositionValid());
-				if (next.isPositionValid() && !next.isPositionOccupied(board,next)){
+				if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
 					moves.add(new Move(this, next));
 				}
+				else if (next.isPositionValid() && next.isPositionOccupied(board.getBoard(),next)){
+					//Springen
+					if (board.getBoard()[next.getX()][next.getY()]==Piece.PAWN_BLACK || board.getBoard()[next.getX()][next.getY()]==Piece.DAME_BLACK)
+					{
+						System.out.println("JUMPING PAWN");
+						next = new Position(this.getX()+2, this.getY()-2);
+						if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
+							moves.add(new Move(this,next));
+						}
+					}
+				}
+				
 			}
-			else if (board[this.getX()][this.getY()]==Piece.DAME_WHITE){
-
+			else if (board.getBoard()[this.getX()][this.getY()]==Piece.DAME_WHITE){
 
 				//Teste alle möglichen Züge				
 				int counter = 1;
 				while (counter < 10){
 					Position next = new Position(this.getX()+1*counter, this.getY()+1*counter);
-					if (next.isPositionValid() && !next.isPositionOccupied(board,next)){
+					if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
 						moves.add(new Move(this, next));
 					}
 					next = new Position(this.getX()+1*counter, this.getY()-1*counter);
-					if (next.isPositionValid() && !next.isPositionOccupied(board,next)){
+					if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
 						moves.add(new Move(this, next));
 					}
 					counter++;
@@ -90,28 +111,28 @@ public class Position {
 		else {
 			//Schwarz spielt von unten nach oben
 
-			if (board[this.getX()][this.getY()]==Piece.PAWN_BLACK){
+			if (board.getBoard()[this.getX()][this.getY()]==Piece.PAWN_BLACK){
 				Position next = new Position(this.getX()-1, this.getY()+1);
-				if (next.isPositionValid() && !next.isPositionOccupied(board,next)){
+				if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
 					moves.add(new Move(this, next));
 				}
 
 				next = new Position(this.getX()-1, this.getY()-1);
-				if (next.isPositionValid() && !next.isPositionOccupied(board,next)){
+				if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
 					moves.add(new Move(this, next));
 				}
 			}
-			else if (board[this.getX()][this.getY()]==Piece.DAME_BLACK){
+			else if (board.getBoard()[this.getX()][this.getY()]==Piece.DAME_BLACK){
 
 				//Teste alle möglichen Züge
 				int counter = 1;
 				while (counter < 10){
 					Position next = new Position(this.getX()-1*counter, this.getY()+1*counter);
-					if (next.isPositionValid() && !next.isPositionOccupied(board,next)){
+					if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
 						moves.add(new Move(this, next));
 					}
 					next = new Position(this.getX()-1*counter, this.getY()-1*counter);
-					if (next.isPositionValid() && !next.isPositionOccupied(board,next)){
+					if (next.isPositionValid() && !next.isPositionOccupied(board.getBoard(),next)){
 						moves.add(new Move(this, next));
 					}
 					counter++;

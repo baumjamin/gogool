@@ -42,7 +42,6 @@ public class Move {
 
 	public Move(Position from, Position to) {
 		this(from.getX(),from.getY(),to.getX(),to.getY());
-
 	}
 
 	public boolean equals(Move anotherMove) {
@@ -52,6 +51,6 @@ public class Move {
 
 	@Override
 	public String toString() {
-		return ("FROM: ("+ fromX+","+fromY+") to ("+toX+","+toY+")");
+		return ("("+ fromX+","+fromY+")->("+toX+","+toY+")");
 	}
 }

@@ -8,9 +8,9 @@ import board.Position;
  */
 public class Player {
 	
-	public static int WHITE = 0;
-	public static int BLACK = 1;
-	public static int KI = 2;
+	public final static int WHITE = 0;
+	public final static int BLACK = 1;
+	public final static int KI = 2;
 	
 	private int color;
 	
