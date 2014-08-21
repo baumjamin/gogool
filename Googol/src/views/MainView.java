@@ -25,6 +25,7 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Button;
 
+import javax.swing.JOptionPane;
 public class MainView {
 
 
@@ -35,7 +36,6 @@ public class MainView {
 		Display display = new Display();
 		Shell mainShell = new Shell(display);
 
-		//TODO Neue, bessere Bilder finden.
 		// Alle Bilder, die verwendet werden initialisieren
 		final Image image_board = new Image(display, new ImageData("images/board.png"));
 		final Image image_pawnWhite = new Image(display, new ImageData("images/pawn_white.png"));
@@ -44,10 +44,8 @@ public class MainView {
 		final Image image_kingBlack = new Image(display, new ImageData("images/king_black.png"));
 
 
-		//TODO Get player names via input?
-		//Man könnte das doch mit nem JOptionPane machen oder?
-		String nameWhite = "Name white";
-		String nameBlack = "Name black";
+		String nameWhite = JOptionPane.showInputDialog("Name des weißen Spielers:");
+		String nameBlack = JOptionPane.showInputDialog("Name des schwarzen Spielers:");
 
 		//Create 2 players
 		final Player playerWhite = new Player(Player.WHITE, nameWhite);
