@@ -45,6 +45,7 @@ public class MainView {
 
 
 		//TODO Get player names via input?
+		//Man könnte das doch mit nem JOptionPane machen oder?
 		String nameWhite = "Name white";
 		String nameBlack = "Name black";
 
