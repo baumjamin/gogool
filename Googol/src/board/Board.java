@@ -90,11 +90,11 @@ public class Board {
 			return false;
 	}
 
+	
+	//TODO Testing!
 	public boolean setMove(Player player, Move move){
 		if (isMoveValid(player, move)){
-			//TODO Actually do the move
 			Piece selectedPiece = board[move.getFromX()][move.getFromY()];
-			//			System.out.println(move.toString() + " ### " +selectedPiece.getPiece() + " " + selectedPiece.getPieceName());
 			board[move.getFromX()][move.getFromY()] = Piece.FREE;
 			if (selectedPiece == Piece.PAWN_WHITE || selectedPiece == Piece.PAWN_BLACK){
 				int toX = move.getToX();
