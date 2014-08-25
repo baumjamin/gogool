@@ -25,6 +25,7 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Button;
 
+import javax.swing.JOptionPane;
 public class MainView {
 
 
@@ -35,7 +36,6 @@ public class MainView {
 		Display display = new Display();
 		Shell mainShell = new Shell(display);
 
-		//TODO Neue, bessere Bilder finden.
 		// Alle Bilder, die verwendet werden initialisieren
 		final Image image_board = new Image(display, new ImageData("images/board.png"));
 		final Image image_pawnWhite = new Image(display, new ImageData("images/pawn_white.png"));
@@ -44,13 +44,13 @@ public class MainView {
 		final Image image_kingBlack = new Image(display, new ImageData("images/king_black.png"));
 
 
-		//TODO Get player names via input?
-		String nameWhite = "Name white";
-		String nameBlack = "Name black";
+		String nameWhite = JOptionPane.showInputDialog("Name des weißen Spielers:");
+		String nameBlack = JOptionPane.showInputDialog("Name des schwarzen Spielers:");
 
-		//Create 2 players
+		//2 Spieler erstellen
 		final Player playerWhite = new Player(Player.WHITE, nameWhite);
 		final Player playerBlack = new Player(Player.BLACK, nameBlack);
+		//TODO Namen der Spieler an dem unteren/oberen Rand anzeigen
 
 		System.out.println();
 		System.out.println();
@@ -58,7 +58,6 @@ public class MainView {
 		board.printBoard();
 
 		// View erstellen
-
 		mainShell.setImage(SWTResourceManager.getImage("images/board.png")); //Kleines icon in der Taskleiste
 		mainShell.setMinimumSize(new Point(800, 700));
 		mainShell.setText("CHECKERS");
@@ -105,7 +104,6 @@ public class MainView {
 			@Override
 			public void mouseDown(MouseEvent event) {
 				System.out.println("Button: " +event.button + " @" + event.x + " " + event.y +" pressed" );
-				System.out.println("as");
 				//TODO Ausrechnen, welches Feld von board geklickt wurde. Ähnlich wie die Berechnung wo die Figuren sind unten.
 				/**
 				 * Stein selektieren,
